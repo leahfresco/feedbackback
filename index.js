@@ -24,6 +24,18 @@ app.use(passport.session());
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
 
+// When in production, Express will serve production assets and will
+// serve index.html to hand route to react-router if a route is entered
+// that it does not recognize
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static('client/build'));
+
+	const path = require('path');
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(_dirname, 'client', 'build', 'index.html'));
+	});
+}
+
 // Port run-time configuration (production) or 5000 (development)
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
