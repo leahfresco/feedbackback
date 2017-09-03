@@ -5,6 +5,8 @@ import * as actions from '../actions';
 
 class Payments extends Component {
 	render() {
+		debugger;
+
 		return (
 			<StripeCheckout
 				name="FeedBackBack"
