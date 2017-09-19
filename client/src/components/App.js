@@ -6,6 +6,7 @@ import Dashboard from './Dashboard';
 import SurveyNew from './surveys/SurveyNew';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import '../styles/Landing.css';
 
 class App extends Component {
 	componentDidMount() {
@@ -15,11 +16,11 @@ class App extends Component {
 	render() {
 		return (
 			<BrowserRouter>
-				<div>
+				<div id="app">
 					<Header />
+					<Route exact path="/surveys" component={Dashboard} />
 					<div className="container">
 						<Route path="/surveys/new" component={SurveyNew} />
-						<Route exact path="/surveys" component={Dashboard} />
 						<Route exact path="/" component={Landing} />
 					</div>
 				</div>
